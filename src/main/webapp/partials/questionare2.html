@@ -1,0 +1,89 @@
+
+<div ng-controller="questionareCtrl" ng-init="initQuestionare()">
+			
+<!-- div class="row"-->					
+	<div class="col-md-8"> 
+		<!-- <h4>Create Process </h4> -->
+      
+    <!--  <div class="panel panel-primary">--> 
+    <div class="panel panel-default">
+    
+			  <div class="panel-heading">Questionare Checklist </div>
+			  <div class="panel-body">
+			
+		<form class="form-horizontal"> 
+			
+			<div class="form-group">
+				<label class="control-label" >QuestionId</label>
+               
+				  <input id="qid" type="text"  ng-model="qaContext.nextQuestion.id" >
+				
+			</div>
+			
+			
+			<div class="form-group">
+				<label class="control-label" >Question</label>
+				  <input id="q" type="text"  ng-model="qaContext.nextQuestion.question"  >
+				
+			</div>
+			
+			
+			<div class="form-group">
+				<label class="control-label" >Answer</label>
+				
+					<select id="answer" ng-model="qaContext.nextQuestion.answer"  >
+						    <option value="Y">Yes</option>
+							<option value="N">No</option>						  
+						</select>               
+			
+			</div>
+			
+						
+			<button  type="button"  ng-click="getNaxtQuestion(qaContext.id,qaContext.nextQuestion.id,qaContext.nextQuestion.question)" class="btn btn-small btn-success">
+							<span class="glyphicon"></span> submit
+							</button>
+		</form>
+		</div>
+		
+		
+		<div class="panel panel-default" >
+     
+			  <div class="panel-heading">checklist Question answered   </div>
+			  <div class="panel-body">	
+			  
+			 
+			  <!-- form id="myForm2" class="form-inline" style="padding-right: 10px"-->
+        		<table class="table table-hover table-striped table-condensed table-bordered ordersTable"  >
+				
+					<thead>
+					<tr>
+						<th >id</th>
+						<th >question</th>
+						<th >answer </th>
+						
+			        </tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="answer in qaContext.answers">
+							<td>{{ answer.questionId }}</td>
+							<td>{{ answer.question }}</td>
+							<td>{{ answer.answer }}</td>
+							
+							<td>
+						</tr>
+					</tbody>
+				</table>
+				
+				 
+				</div>
+		</div>		
+		
+		 <!--  <div class="panel-footer">
+		     <h5> <span ng-show="eligibility.isEligible === 'N'" class="label label-default"> {{eligibility.message}} </span></h5>
+
+		   </div> -->
+        </div>		
+		
+	</div>
+</div>
+

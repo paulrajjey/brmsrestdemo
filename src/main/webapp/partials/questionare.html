@@ -1,0 +1,73 @@
+
+<div ng-controller="questionareCtrl" ng-init="initQuestionare()">
+			
+<!-- div class="row"-->					
+	<div class="col-md-9"> 
+		<!-- <h4>Create Process </h4> -->
+      
+    <!--  <div class="panel panel-primary">--> 
+    <div class="panel panel-default">
+    
+			  <div class="panel-heading">Questionare Checklist </div>
+			  <div class="panel-body">
+			
+		<form > 
+			
+               <p ng-show="qaContext.nextQuestion.id == 'Done'"  > {{qaContext.nextQuestion.question}} </p>
+               
+               <p ng-show="qaContext.nextQuestion.id != 'Done'"  > {{qaContext.nextQuestion.id}}. {{qaContext.nextQuestion.question}} 
+               
+				
+			
+			<select id="answer" ng-model="answer"  >
+						    <option value="Y">Yes</option>
+							<option value="N">No</option>						  
+						</select>   
+								
+			<button  type="button"  ng-disabled="qaContext.nextQuestion.id == 'Done'" ng-click="getNaxtQuestion(qaContext.id,qaContext.nextQuestion.id,qaContext.nextQuestion.question)" class="btn btn-small btn-success">
+							<span class="glyphicon"></span> submit
+							</button></p>
+		</form>
+		</div>
+		
+	
+        </div>		
+        	
+		<div class="panel panel-default" >
+     
+			  <div class="panel-heading">Checklist Question(s) answered!   </div>
+			  <div class="panel-body">	
+			  <form id="myForm" class="form-inline" style="padding-right: 10px">
+			 
+			  <!-- form id="myForm2" class="form-inline" style="padding-right: 10px"-->
+        		<table class="table table-hover table-striped table-condensed table-bordered ordersTable"  > 
+				
+					<thead>
+					<tr>
+						<th >id</th>
+						<th >question</th>
+						<th >answer </th>
+						
+			        </tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="answer in qaContext.answers">
+							<td>{{ answer.questionId }}</td>
+							<td>{{ answer.question }}</td>
+							<td>{{ answer.answer }}</td>
+					</tr>
+					</tbody>
+				</table>
+				</form>
+				 
+				</div>
+		</div>		
+		
+		 <!--  <div class="panel-footer">
+		     <h5> <span ng-show="eligibility.isEligible === 'N'" class="label label-default"> {{eligibility.message}} </span></h5>
+
+		   </div> -->
+		
+	</div>
+</div>
+

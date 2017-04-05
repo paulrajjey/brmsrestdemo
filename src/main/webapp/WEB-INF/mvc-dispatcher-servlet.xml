@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+    	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+    	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+  <context:component-scan base-package="org.jbpm.spring.web,org.jbpm.spring.model" />
+
+  <!-- import resource="classpath:jee-tx-context.xml" />
+  <import resource="classpath:jpa-context.xml" />
+  <import resource="classpath:jbpm-context.xml" / -->
+
+ <mvc:annotation-driven />
+  <mvc:default-servlet-handler />
+  <mvc:resources mapping="/resources/**" location="/resources/" />
+  <!--  angular js  -->
+   <context:annotation-config/> 
+   <mvc:annotation-driven />
+  <!-- mvc:annotation-driven content-negotiation-manager="contentManager"/>
+	<bean id="contentManager"
+                class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+                <property name="favorPathExtension" value="true"/>
+                <property name="ignoreAcceptHeader" value="true" />
+                <property name="defaultContentType" value="text/html" />
+                <property name="useJaf" value="false"/>
+                <property name="mediaTypes">
+	                <map>
+	                    <entry key="html" value="text/html" />
+	                    <entry key="json" value="application/json" />
+	                    <entry key="xml" value="application/xml" />
+	                </map>
+                </property>
+        </bean> -->
+        
+	<!-- <bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean> -->
+	
+  <!-- JSON Support 
+    <bean name="viewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+    <bean name="jsonTemplate" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+    -->
+    <bean name="handlerAdapter"
+class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    <property name="messageConverters">
+        <list>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+            <ref bean="jsonConverter"/>
+
+        </list>
+
+    </property>
+    <property name="requireSession" value="false"/>
+
+</bean>
+<bean id="jsonConverter" class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+    <property name="supportedMediaTypes" value="application/json"/>
+</bean>
+
+   <!--  
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" /> 
+
+  <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+    <property name="definitions">
+      <list>
+        <value>/WEB-INF/tiles-definitions.xml</value>
+      </list>
+    </property>
+  </bean-->
+<!-- 
+  <bean id="deploymentStore" class="org.jbpm.kie.services.impl.store.DeploymentStore">
+    <property name="commandService" ref="transactionCmdService" />
+  </bean>
+  
+  <bean id="deploymentSync" class="org.jbpm.kie.services.impl.store.DeploymentSynchronizer">
+    <property name="deploymentService" ref="deploymentService"/>
+    <property name="deploymentStore" ref="deploymentStore" />
+  </bean>
+  
+  <bean id="syncInvoker" class="org.jbpm.kie.services.impl.store.DeploymentSyncInvoker" init-method="start" destroy-method="stop">
+    <constructor-arg name="synchronizer" ref="deploymentSync"/>
+  </bean>
+ -->
+</beans>
