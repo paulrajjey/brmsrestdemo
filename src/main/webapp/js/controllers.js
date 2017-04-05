@@ -23,7 +23,8 @@ app.controller('questionareCtrl', function($scope, $http,UserTaskService) {
     $scope.initQuestionare = function () {
 	
 	// $scope.covplan = { show: false }
-	  var url = 'http://localhost:8280/brms-demo/initQuestionare?'  ;
+	  //var url = 'http://localhost:8280/brms-demo/initQuestionare?'  ;
+    	var url = ' http://qachecklistapp-jbosseap.jeyocp.sc.osecloud.com/brms-demo/initQuestionare?'  ;
 	  
 	  $scope.qaContext = UserTaskService.getUserTaskData(url,$scope); 
 	  
@@ -33,9 +34,10 @@ app.controller('questionareCtrl', function($scope, $http,UserTaskService) {
     $scope.getNaxtQuestion = function (id,qid,qs) {
     	
     	// $scope.covplan = { show: false }
-    	// var url = 'http://localhost:8280/credit-dispute/nextQuestion?id=' + id  +  '&qaContext.nextQuestion.id=' + $scope.qaContext.nextQuestion.id + '&qaContext.nextQuestion.question=' + $scope.qaContext.nextQuestion.question + '&qaContext.nextQuestion.answer=' + $scope.qaContext.nextQuestion.answer ;
-    	 var url = 'http://localhost:8280/brms-demo/nextQuestion?id=' + id  +  '&qaContext.nextQuestion.id=' + qid + '&qaContext.nextQuestion.question=' + qs + '&qaContext.nextQuestion.answer=' + $scope.answer ;
-    	  
+    	// var url = 'http://localhost:8280/brms-demo/nextQuestion?id=' + id  +  '&qaContext.nextQuestion.id=' + qid + '&qaContext.nextQuestion.question=' + qs + '&qaContext.nextQuestion.answer=' + $scope.answer ;
+
+    	var url = ' http://qachecklistapp-jbosseap.jeyocp.sc.osecloud.com/brms-demo/nextQuestion?id=' + id  +  '&qaContext.nextQuestion.id=' + qid + '&qaContext.nextQuestion.question=' + qs + '&qaContext.nextQuestion.answer=' + $scope.answer ;
+
     	  $scope.qaContext = UserTaskService.getUserTaskData(url,$scope); 
     	  
     	  
