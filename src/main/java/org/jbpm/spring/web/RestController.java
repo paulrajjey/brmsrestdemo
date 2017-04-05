@@ -84,7 +84,7 @@ public class RestController {
 		if("Done".equals(nextQid)){
 			
 			 System.out.println("QA completed for he quetionare " +  qacontect.getId());
-			 Map<String, Object> params = new HashMap<String, Object>() ;
+			/* Map<String, Object> params = new HashMap<String, Object>() ;
 			 params.put("checkListContext", qacontect);
 			 params.put("isCheckListReviewed", "N");
 			 
@@ -96,7 +96,7 @@ public class RestController {
 			} catch (MalformedURLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			
 
 		}

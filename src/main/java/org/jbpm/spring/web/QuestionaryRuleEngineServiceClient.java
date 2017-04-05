@@ -58,10 +58,15 @@ public class QuestionaryRuleEngineServiceClient {
      }
 	public  QandAContext initiateQuestionare(){
 		
-		   String serverUrl = "http://localhost:8080/kie-server/services/rest/server";
+		   /*String serverUrl = "http://localhost:8080/kie-server/services/rest/server";
 	       String user = "bpmsAdmin";
 	       String password = "jboss123$";
-	       String containerId = "questionare";
+	       String containerId = "questionare";*/
+		   String serverUrl = "http://kie-app-brmsdemo1.jeyocp.sc.osecloud.com/kie-server/services/rest/server";
+	       String user = "kieserver";
+	       String password = "kieserver1!";
+	       String containerId = "checklist";
+		 
 	       
 	       Set<Class<?>> classes = new HashSet<Class<?>>();
 	       Marshaller marshaller = MarshallerFactory.getMarshaller(classes,  MarshallingFormat.XSTREAM, QuestionaryRuleEngineServiceClient.class.getClassLoader());
@@ -101,10 +106,15 @@ public class QuestionaryRuleEngineServiceClient {
 	
 	public  QandAContext getNextQuestion(String questionarId , Answer answer){
 		
-		   String serverUrl = "http://localhost:8080/kie-server/services/rest/server";
+		   /*String serverUrl = "http://localhost:8080/kie-server/services/rest/server";
 	       String user = "bpmsAdmin";
 	       String password = "jboss123$";
-	       String containerId = "questionare";
+	       String containerId = "questionare";*/
+		
+		  String serverUrl = "http://kie-app-brmsdemo1.jeyocp.sc.osecloud.com/kie-server/services/rest/server";
+	       String user = "kieserver";
+	       String password = "kieserver1!";
+	       String containerId = "checklist";
 	       
 	       Set<Class<?>> classes = new HashSet<Class<?>>();
 	       Marshaller marshaller = MarshallerFactory.getMarshaller(classes,  MarshallingFormat.XSTREAM, QuestionaryRuleEngineServiceClient.class.getClassLoader());
