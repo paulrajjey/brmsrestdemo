@@ -36,7 +36,8 @@ public class QuestionaryRuleEngineServiceClient {
 	public ExecutionResultImpl execute( KieServicesClient  kieServicesClient,Command<?> batchCommand,Marshaller marshaller ){
 		
 	
-     String containerId = "questionare";
+     //String containerId = "questionare";
+		String containerId = "checklist";
 	 RuleServicesClient ruleClient = kieServicesClient.getServicesClient(RuleServicesClient.class);
      ServiceResponse<String> executeResponse =
      		ruleClient.executeCommands(containerId, batchCommand);
